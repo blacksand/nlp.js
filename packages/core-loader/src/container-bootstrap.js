@@ -224,8 +224,8 @@ function containerBootstrap(
             try {
               /* eslint-disable-next-line */
               lib = require(getAbsolutePath(
-                path.join('./node_modules', info.path)
-              ));
+                getAbsolutePath(path.join('./node_modules', info.path))
+              );
             } catch (err2) {
               throw new Error(
                 `You have to install library "${info.path}" to use plugin "${current}"`
