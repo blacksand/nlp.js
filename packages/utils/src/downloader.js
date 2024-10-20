@@ -24,7 +24,7 @@
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
-const HttpsProxyAgent = require('https-proxy-agent');
+const { HttpsProxyAgent } = require('https-proxy-agent');
 const path = require('path');
 const tar = require('tar');
 const url = require('url');
@@ -53,7 +53,10 @@ class Downloader {
         process.env.HTTPS_PROXY;
     }
     if (this.proxy) {
-      this.agent = new HttpsProxyAgent(this.proxy);
+      const proxy = this.proxy.startsWith('https://')
+        ? this.proxy
+        : `https://${this.proxy}`;
+      this.agent = new HttpsProxyAgent(proxy);
     }
   }
 
