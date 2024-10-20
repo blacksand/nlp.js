@@ -46,7 +46,9 @@
   },
   "jest": {
     "verbose": true,
-    "testURL": "http://localhost/",
+    "testEnvironmentOptions": {
+      "url": "http://localhost/"
+    },
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/src/**/**.js",
