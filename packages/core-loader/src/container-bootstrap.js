@@ -21,8 +21,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 const {
   ArrToObj,
   Container,
@@ -34,26 +34,26 @@ const {
   Timer,
   logger,
   MemoryStorage,
-} = require('@nlpjs/core');
-const { fs: requestfs, request } = require('@nlpjs/request');
-const pluginInformation = require('./plugin-information.json');
+} = require("@nlpjs/core");
+const { fs: requestfs, request } = require("@nlpjs/request");
+const pluginInformation = require("./plugin-information.json");
 const {
   listFilesAbsolute,
   getAbsolutePath,
   loadEnv,
   loadEnvFromJson,
-} = require('./helper');
+} = require("./helper");
 
-const defaultPathConfiguration = './conf.json';
-const defaultPathPipeline = './pipelines.md';
-const defaultPathPlugins = './plugins';
+const defaultPathConfiguration = "./conf.json";
+const defaultPathPipeline = "./pipelines.md";
+const defaultPathPlugins = "./plugins";
 
 function loadPipelinesStr(instance, pipelines) {
   instance.loadPipelinesFromString(pipelines);
 }
 
 function loadPipelinesFromFile(instance, fileName) {
-  const str = fs.readFileSync(fileName, 'utf8');
+  const str = fs.readFileSync(fileName, "utf8");
   instance.loadPipelinesFromString(str);
 }
 
@@ -65,7 +65,7 @@ function loadPipelines(instance, fileName) {
   } else if (fs.existsSync(fileName)) {
     if (fs.lstatSync(fileName).isDirectory()) {
       const files = listFilesAbsolute(fileName).filter((x) =>
-        x.endsWith('.md')
+        x.endsWith(".md"),
       );
       for (let i = 0; i < files.length; i += 1) {
         loadPipelines(instance, files[i]);
@@ -84,7 +84,7 @@ function loadPlugins(instance, fileName) {
   } else if (fs.existsSync(fileName)) {
     if (fs.lstatSync(fileName).isDirectory()) {
       const files = listFilesAbsolute(fileName).filter((x) =>
-        x.endsWith('.js')
+        x.endsWith(".js"),
       );
       for (let i = 0; i < files.length; i += 1) {
         loadPlugins(instance, files[i]);
@@ -98,8 +98,8 @@ function loadPlugins(instance, fileName) {
 }
 
 function traverse(obj, preffix) {
-  if (typeof obj === 'string') {
-    if (obj.startsWith('$')) {
+  if (typeof obj === "string") {
+    if (obj.startsWith("$")) {
       return (
         process.env[`${preffix}${obj.slice(1)}`] || process.env[obj.slice(1)]
       );
@@ -109,7 +109,7 @@ function traverse(obj, preffix) {
   if (Array.isArray(obj)) {
     return obj.map((x) => traverse(x, preffix));
   }
-  if (typeof obj === 'object') {
+  if (typeof obj === "object") {
     const keys = Object.keys(obj);
     const result = {};
     for (let i = 0; i < keys.length; i += 1) {
@@ -126,14 +126,14 @@ function containerBootstrap(
   container,
   preffix,
   pipelines,
-  parent
+  parent,
 ) {
   const mustLoadEnv = srcMustLoadEnv === undefined ? true : srcMustLoadEnv;
   const instance = container || new Container(preffix);
   instance.parent = parent;
   if (!preffix) {
-    instance.register('fs', requestfs);
-    instance.register('request', { get: request });
+    instance.register("fs", requestfs);
+    instance.register("request", { get: request });
     instance.use(ArrToObj);
     instance.use(Normalizer);
     instance.use(ObjToArr);
@@ -146,7 +146,7 @@ function containerBootstrap(
   }
   const srcSettings = inputSettings || {};
   let settings = srcSettings;
-  if (typeof settings === 'string') {
+  if (typeof settings === "string") {
     settings = {
       pathConfiguration: srcSettings,
       pathPipeline: defaultPathPipeline,
@@ -181,10 +181,10 @@ function containerBootstrap(
     configuration = settings;
   } else {
     configuration = JSON.parse(
-      fs.readFileSync(settings.pathConfiguration, 'utf8')
+      fs.readFileSync(settings.pathConfiguration, "utf8"),
     );
   }
-  configuration = traverse(configuration, preffix ? `${preffix}_` : '');
+  configuration = traverse(configuration, preffix ? `${preffix}_` : "");
   if (configuration.pathPipeline) {
     settings.pathPipeline = configuration.pathPipeline;
   }
@@ -197,18 +197,18 @@ function containerBootstrap(
       instance.registerConfiguration(
         keys[i],
         configuration.settings[keys[i]],
-        true
+        true,
       );
     }
   }
   if (configuration.use) {
     for (let i = 0; i < configuration.use.length; i += 1) {
       const current = configuration.use[i];
-      if (typeof current === 'string') {
+      if (typeof current === "string") {
         let infoArr = pluginInformation[current];
         if (!infoArr) {
           throw new Error(
-            `Plugin information not found for plugin "${current}"`
+            `Plugin information not found for plugin "${current}"`,
           );
         }
         if (!Array.isArray(infoArr)) {
@@ -223,12 +223,12 @@ function containerBootstrap(
           } catch (err) {
             try {
               /* eslint-disable-next-line */
-              lib = require(getAbsolutePath(
+              lib = require(
                 getAbsolutePath(path.join('./node_modules', info.path))
               );
             } catch (err2) {
               throw new Error(
-                `You have to install library "${info.path}" to use plugin "${current}"`
+                `You have to install library "${info.path}" to use plugin "${current}"`,
               );
             }
           }
@@ -238,10 +238,10 @@ function containerBootstrap(
         let lib;
         try {
           /* eslint-disable-next-line */
-            lib = require(current.path);
+          lib = require(current.path);
         } catch (err) {
           /* eslint-disable-next-line */
-            lib = require(getAbsolutePath(current.path));
+          lib = require(getAbsolutePath(current.path));
         }
         instance.use(lib[current.className], current.name, current.isSingleton);
       }
@@ -263,15 +263,15 @@ function containerBootstrap(
       instance.registerPipeline(
         pipeline.tag,
         pipeline.pipeline,
-        pipeline.overwrite
+        pipeline.overwrite,
       );
     }
   }
-  loadPipelines(instance, settings.pathPipeline || './pipelines.md');
+  loadPipelines(instance, settings.pathPipeline || "./pipelines.md");
   if (configuration.pipelines) {
     loadPipelinesStr(instance, configuration.pipelines);
   }
-  loadPlugins(instance, settings.pathPlugins || './plugins');
+  loadPlugins(instance, settings.pathPlugins || "./plugins");
   return instance;
 }
 
