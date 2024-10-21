@@ -5,7 +5,8 @@
     "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
     "lint": "eslint .",
     "lintfix": "eslint --fix .",
-    "test": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=4 ."
+    "test": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=4 .",
+    "test-one": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=1 ."
   },
   "author": {
     "email": "opensource@axa.com",
