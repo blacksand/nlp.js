@@ -28,5 +28,8 @@
     "@nlpjs/core": "^4.26.1",
     "cors": "^2.8.5",
     "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
   }
 }

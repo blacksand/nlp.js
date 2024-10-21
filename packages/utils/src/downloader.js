@@ -77,7 +77,8 @@ class Downloader {
       }
       const absolutePath = getAbsolutePath(relativePath, this.dir);
       if (fs.existsSync(absolutePath) && !this.replaceIfExists) {
-        return resolve('Already exists');
+        resolve('Already exists');
+        return;
       }
       const isTar =
         absolutePath.endsWith('.tar.gz') || absolutePath.endsWith('.tgz');
@@ -133,7 +134,7 @@ class Downloader {
       request.on('error', (err) => {
         fs.unlink(absolutePath, () => reject(err));
       });
-      return request.end();
+      request.end();
     });
   }
 }
