@@ -6,7 +6,7 @@
     "lint": "eslint .",
     "lintfix": "eslint --fix .",
     "test": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=4 .",
-    "test-ci": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=2 ."
+    "test-ci": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=1 --maxConcurrency=1 ."
   },
   "author": {
     "email": "opensource@axa.com",
