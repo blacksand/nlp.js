@@ -5,8 +5,7 @@
     "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
     "lint": "eslint .",
     "lintfix": "eslint --fix .",
-    "test": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=4 .",
-    "test-ci": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=1 --maxConcurrency=1 ."
+    "test": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=4 ."
   },
   "author": {
     "email": "opensource@axa.com",
@@ -58,7 +57,6 @@
       "!./packages/express-api-server/src/public/**/**"
     ],
     "coverageDirectory": "coverage",
-    "testEnvironment": "node",
-    "workerIdleMemoryLimit": 0.1
+    "testEnvironment": "node"
   }
 }
