@@ -6,7 +6,7 @@
     "lint": "eslint .",
     "lintfix": "eslint --fix .",
     "test": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=4 .",
-    "test-one": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=1 ."
+    "test-ci": "eslint --fix . && TZ='Europe/London' jest --silent --coverage --maxWorkers=2 ."
   },
   "author": {
     "email": "opensource@axa.com",
@@ -58,6 +58,7 @@
       "!./packages/express-api-server/src/public/**/**"
     ],
     "coverageDirectory": "coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "workerIdleMemoryLimit": 0.1
   }
 }
