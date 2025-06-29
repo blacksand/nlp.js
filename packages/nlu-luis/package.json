@@ -25,8 +25,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@nlpjs/core": "^4.26.1",
-    "@nlpjs/nlu": "^4.27.0",
-    "@nlpjs/request": "^4.25.0"
+    "@nlpjs/core": "workspace:*",
+    "@nlpjs/nlu": "workspace:*",
+    "@nlpjs/request": "workspace:*"
   }
 }

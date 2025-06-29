@@ -25,7 +25,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@nlpjs/core": "^4.26.1"
+    "@nlpjs/core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

@@ -29,7 +29,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@nlpjs/xtables": "^4.25.0",
+    "@nlpjs/xtables": "workspace:*",
     "exceljs": "^4.4.0",
     "https-proxy-agent": "^7.0.5",
     "tar": "^7.4.3"

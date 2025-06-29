@@ -25,7 +25,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@nlpjs/evaluator": "^4.26.1",
-    "@nlpjs/lexer": "^4.26.1"
+    "@nlpjs/evaluator": "workspace:*",
+    "@nlpjs/lexer": "workspace:*"
   }
 }

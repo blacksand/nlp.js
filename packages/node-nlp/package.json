@@ -43,20 +43,20 @@
     "bot"
   ],
   "dependencies": {
-    "@nlpjs/builtin-duckling": "^4.26.1",
-    "@nlpjs/builtin-microsoft": "^4.26.1",
-    "@nlpjs/core-loader": "^4.26.1",
-    "@nlpjs/emoji": "^4.26.1",
-    "@nlpjs/evaluator": "^4.26.1",
-    "@nlpjs/lang-all": "^4.26.1",
-    "@nlpjs/language": "^4.25.0",
-    "@nlpjs/neural": "^4.25.0",
-    "@nlpjs/nlg": "^4.26.1",
-    "@nlpjs/nlp": "^4.27.0",
-    "@nlpjs/nlu": "^4.27.0",
-    "@nlpjs/request": "^4.25.0",
-    "@nlpjs/sentiment": "^4.26.1",
-    "@nlpjs/similarity": "^4.26.1",
-    "@nlpjs/xtables": "^4.25.0"
+    "@nlpjs/builtin-duckling": "workspace:*",
+    "@nlpjs/builtin-microsoft": "workspace:*",
+    "@nlpjs/core-loader": "workspace:*",
+    "@nlpjs/emoji": "workspace:*",
+    "@nlpjs/evaluator": "workspace:*",
+    "@nlpjs/lang-all": "workspace:*",
+    "@nlpjs/language": "workspace:*",
+    "@nlpjs/neural": "workspace:*",
+    "@nlpjs/nlg": "workspace:*",
+    "@nlpjs/nlp": "workspace:*",
+    "@nlpjs/nlu": "workspace:*",
+    "@nlpjs/request": "workspace:*",
+    "@nlpjs/sentiment": "workspace:*",
+    "@nlpjs/similarity": "workspace:*",
+    "@nlpjs/xtables": "workspace:*"
   }
 }
