@@ -129,11 +129,15 @@ declare class Timer {
   stop(): void;
 }
 
-declare const logger: {
+declare class Logger {
   error(...args: any[]): void;
+
   warn(...args: any[]): void;
+
   info(...args: any[]): void;
+
   debug(...args: any[]): void;
+
   trace(...args: any[]): void;
 }
 
@@ -186,7 +190,7 @@ export {
   Stopwords,
   Tokenizer,
   Timer,
-  logger,
+  Logger,
   MemoryStorage,
   uuid,
   dock,

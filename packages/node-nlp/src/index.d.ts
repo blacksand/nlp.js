@@ -71,7 +71,7 @@ export interface NlpResult {
 }
 
 export interface NlpManagerOptions {
-  languages: string[];
+  languages?: string[];
   nlu?: any;
   ner?: any;
   sentiment?: any;
@@ -81,128 +81,159 @@ export interface NlpManagerOptions {
   forceNER?: boolean;
 }
 
+import { Evaluator as EvaluatorClass } from '@nlpjs/evaluator'
 // Language
-export class Language {
-  constructor(settings?: any);
-  guess(text: string, whitelist?: string[]): { language: string, alpha2: string, alpha3: string, score: number };
-  guessBest(text: string, whitelist?: string[]): { language: string, alpha2: string, alpha3: string, score: number };
-}
-
+import { Language as NlpLanguage } from '@nlpjs/language'
+// NLG
+import { NlgManager as NlgManagerClass } from '@nlpjs/nlg'
 // NLP
-export class NlpUtil {
-  static getStemmer(locale: string): any;
-  static getTokenizer(locale: string): any;
-  static getStopwords(locale: string): string[];
-  static addStopwords(locale: string, words: string[]): void;
-  static removeStopwords(locale: string, words: string[]): void;
-}
-
-export class NlpManager {
-  constructor(options?: NlpManagerOptions);
-  addDocument(locale: string, utterance: string, intent: string): void;
-  addAnswer(locale: string, intent: string, answer: string): void;
-  process(locale: string, utterance: string): Promise<NlpResult>;
-  train(): Promise<void>;
-  save(filename: string): Promise<void>;
-  load(filename: string): Promise<void>;
-}
-
-export class NlpExcelReader {
-  constructor(manager: NlpManager);
-  load(filename: string): Promise<void>;
-}
-
+import { ContextManager, Nlp as NlpManagerClass } from '@nlpjs/nlp'
+// NLU
+import { NluManager as BrainNLUClass } from '@nlpjs/nlu'
+import { QnaImporter } from '@nlpjs/qna-importer'
+// Sentiment
+import { SentimentAnalyzer as SentimentAnalyzerClass } from '@nlpjs/sentiment'
+import { SpellCheck as SpellCheckClass } from '@nlpjs/similarity'
 // XTables
-export class XTableUtils {
-  static generateId(): string;
-  static generateUuid(): string;
+import { XDoc as XDocClass, XTable as XTableClass, XTableUtils as XTableUtilsClass } from '@nlpjs/xtables'
+// Classifiers
+export { NeuralNetwork } from '@nlpjs/neural'
+
+export class Language extends NlpLanguage {
 }
 
-export class XTable {
+export class NlpUtil {
+  static getStemmer(locale: string): any
+
+  static getTokenizer(locale: string): any
+
+  static getStopwords(locale: string): string[]
+
+  static addStopwords(locale: string, words: string[]): void
+
+  static removeStopwords(locale: string, words: string[]): void
+}
+
+export class NlpManager extends NlpManagerClass {
+  constructor(options?: NlpManagerOptions);
+
+  addDocument(locale: string, utterance: string, intent: string): void;
+
+  addAnswer(locale: string, intent: string, answer: string): void;
+
+  process(locale: string, utterance: string): Promise<NlpResult>;
+
+  train(): Promise<void>;
+
+  save(filename: string): Promise<void>;
+
+  load(filename: string): Promise<boolean>;
+}
+
+export class NlpExcelReader extends QnaImporter {
+  constructor(manager: NlpManager);
+
+  load(filename: string): Promise<void>;
+}
+
+export class XTableUtils extends XTableUtilsClass {
+}
+
+export class XTable extends XTableClass {
   constructor(name: string, settings?: any);
+
   addRow(row: any): void;
+
   getRow(id: string): any;
+
   removeRow(id: string): void;
+
   findOne(condition: any): any;
+
   find(condition: any): any[];
 }
 
-export class XDoc {
+export class XDoc extends XDocClass {
   constructor(settings?: any);
+
   addTable(name: string, settings?: any): XTable;
+
   getTable(name: string): XTable;
+
   removeTable(name: string): void;
+
   save(filename: string): Promise<void>;
+
   load(filename: string): Promise<void>;
 }
 
 // Util
-export function removeEmojis(text: string): string;
+export { removeEmojis } from '@nlpjs/emoji'
 
-export class Evaluator {
+export class Evaluator extends EvaluatorClass {
   constructor(settings?: any);
-  evaluate(text: string, context?: any): any;
 }
 
-export class SpellCheck {
+export class SpellCheck extends SpellCheckClass {
   constructor(settings?: any);
-  check(text: string): string;
 }
 
-export class Handlebars {
+// Handlebars is not directly exported from any @nlpjs package, so we'll define a placeholder.
+declare class Handlebars {
   static compile(template: string): (context: any) => string;
+
   static registerHelper(name: string, fn: Function): void;
 }
 
-// NLG
-export class ActionManager {
-  constructor(settings?: any);
-  addAction(name: string, fn: Function): void;
-  findAction(name: string): Function;
-  runActions(actions: string[], input: any): Promise<any>;
-}
+export { Handlebars }
 
-export class NlgManager {
+export { ActionManager } from '@nlpjs/nlg'
+
+export class NlgManager extends NlgManagerClass {
   constructor(settings?: any);
+
   addAnswer(locale: string, intent: string, answer: string): void;
+
   findAnswer(locale: string, intent: string): string;
+
+  // @ts-expect-error override
   findAllAnswers(locale: string, intent: string): string[];
+
   save(filename: string): Promise<void>;
+
   load(filename: string): Promise<void>;
 }
 
-// Classifiers
-export class NeuralNetwork {
-  constructor(settings?: any);
-  train(data: any[]): void;
-  run(input: any): any;
-  save(): any;
-  load(data: any): void;
-}
 
-// Sentiment
-export class SentimentAnalyzer {
+export class SentimentAnalyzer extends SentimentAnalyzerClass {
   constructor(settings?: any);
+
   getSentiment(text: string, locale?: string): Sentiment;
 }
 
 export class SentimentManager {
   constructor(settings?: any);
+
   addLanguage(locale: string): void;
+
   process(text: string, locale?: string): Sentiment;
+
   save(filename: string): Promise<void>;
+
   load(filename: string): Promise<void>;
 }
 
-// Recognizer
 export class Recognizer {
   constructor(settings?: any);
+
   recognize(utterance: string, context?: any): Promise<any>;
 }
 
-export class ConversationContext {
+export class ConversationContext extends ContextManager {
   constructor(settings?: any);
+
   getConversationContext(id: string): any;
+
   setConversationContext(id: string, context: any): void;
 }
 
@@ -210,12 +241,16 @@ export class MemoryConversationContext extends ConversationContext {
   constructor(settings?: any);
 }
 
-// NLU
-export class BrainNLU {
+export class BrainNLU extends BrainNLUClass {
   constructor(settings?: any);
+
   add(utterance: string, intent: string): void;
+
   train(): Promise<void>;
+
   getClassifications(utterance: string): Promise<Classification[]>;
+
   save(filename: string): Promise<void>;
+
   load(filename: string): Promise<void>;
 }

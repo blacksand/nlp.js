@@ -1,5 +1,5 @@
 // const { Ner } = require('@nlpjs/ner');
-const { Ner } = require('../../packages/ner');
+const { Ner } = require('../../packages/ner/src');
 
 (async () => {
   const ner = new Ner();

@@ -1,5 +1,5 @@
-const { Ner } = require('../../packages/ner');
-const { BuiltinMicrosoft } = require('../../packages/builtin-microsoft');
+const { Ner } = require('../../packages/ner/src');
+const { BuiltinMicrosoft } = require('../../packages/builtin-microsoft/src');
 
 (async () => {
   const builtin = new BuiltinMicrosoft();

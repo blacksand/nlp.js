@@ -51,6 +51,7 @@
     "@nlpjs/lang-all": "workspace:*",
     "@nlpjs/language": "workspace:*",
     "@nlpjs/neural": "workspace:*",
+    "@nlpjs/qna-importer": "workspace:*",
     "@nlpjs/nlg": "workspace:*",
     "@nlpjs/nlp": "workspace:*",
     "@nlpjs/nlu": "workspace:*",
