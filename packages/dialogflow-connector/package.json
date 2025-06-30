@@ -25,11 +25,12 @@
   ],
   "license": "MIT",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@nlpjs/connector": "^4.26.1",
+    "@nlpjs/connector": "workspace:*",
     "actions-on-google": "^3.0.0"
   },
   "publishConfig": {

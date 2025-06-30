@@ -10,6 +10,6 @@
   "author": "Eric Lara <ericzon@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@nlpjs/basic": "^4.22.14"
+    "@nlpjs/basic": "workspace:*"
   }
 }

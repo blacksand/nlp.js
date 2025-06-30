@@ -10,7 +10,7 @@
   "author": "Eric Lara <ericzon@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@nlpjs/builtin-microsoft": "^4.22.7",
-    "@nlpjs/ner": "^4.22.9"
+    "@nlpjs/builtin-microsoft": "workspace:*",
+    "@nlpjs/ner": "workspace:*"
   }
 }

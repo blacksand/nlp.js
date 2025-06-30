@@ -1,0 +1,8 @@
+packages:
+  - examples/*
+  - packages/*
+
+onlyBuiltDependencies:
+  - '@tensorflow/tfjs-node'
+  - botbuilder-dialogs
+  - core-js
