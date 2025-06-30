@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-eu' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangEu {
-    constructor(container?: any);
+class LangEu {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerEu extends Tokenizer {
-  }
+class TokenizerEu extends Tokenizer {
+}
 
-  class StemmerEu extends Stemmer {
-  }
+class StemmerEu extends Stemmer {
+}
 
-  class StopwordsEu extends Stopwords {
-  }
+class StopwordsEu extends Stopwords {
+}
 
-  class NormalizerEu extends Normalizer {
-  }
+class NormalizerEu extends Normalizer {
+}
 
-  class SentimentEu {
-    constructor(settings?: any);
+class SentimentEu {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangEu,
-    StemmerEu,
-    StopwordsEu,
-    TokenizerEu,
-    NormalizerEu,
-    SentimentEu,
-  }
+export {
+  LangEu,
+  StemmerEu,
+  StopwordsEu,
+  TokenizerEu,
+  NormalizerEu,
+  SentimentEu,
 }

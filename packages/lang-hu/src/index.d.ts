@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-hu' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangHu {
-    constructor(container?: any);
+class LangHu {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerHu extends Tokenizer {
-  }
+class TokenizerHu extends Tokenizer {
+}
 
-  class StemmerHu extends Stemmer {
-  }
+class StemmerHu extends Stemmer {
+}
 
-  class StopwordsHu extends Stopwords {
-  }
+class StopwordsHu extends Stopwords {
+}
 
-  class NormalizerHu extends Normalizer {
-  }
+class NormalizerHu extends Normalizer {
+}
 
-  class SentimentHu {
-    constructor(settings?: any);
+class SentimentHu {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangHu,
-    StemmerHu,
-    StopwordsHu,
-    TokenizerHu,
-    NormalizerHu,
-    SentimentHu,
-  }
+export {
+  LangHu,
+  StemmerHu,
+  StopwordsHu,
+  TokenizerHu,
+  NormalizerHu,
+  SentimentHu,
 }

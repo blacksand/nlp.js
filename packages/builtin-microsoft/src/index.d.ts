@@ -1,6 +1,6 @@
 import { Clonable, Container } from '@nlpjs/core'
 
-export class BuiltinMicrosoft extends Clonable {
+class BuiltinMicrosoft extends Clonable {
   constructor(settings?: Partial<BuiltinMicrosoftSettings>, container?: Container);
 
   registerDefault(): void;
@@ -20,9 +20,14 @@ export class BuiltinMicrosoft extends Clonable {
   run(srcInput: any): any;
 }
 
-export interface BuiltinMicrosoftSettings {
+interface BuiltinMicrosoftSettings {
   tag?: string;
   allowList?: string[];
   builtinAllowList?: { [key: string]: number };
   container?: Container;
+}
+
+export {
+  BuiltinMicrosoft,
+  BuiltinMicrosoftSettings,
 }

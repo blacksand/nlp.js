@@ -1,36 +1,35 @@
-declare module '@nlpjs/lang-ru' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangRu {
-    constructor(container?: any);
+class LangRu {
+  public name: string
 
-    public name: string
-  }
-
-  class TokenizerRu extends Tokenizer {
-  }
-
-  class StemmerRu extends Stemmer {
-  }
-
-  class StopwordsRu extends Stopwords {
-  }
-
-  class NormalizerRu extends Normalizer {
-  }
-
-  class SentimentRu {
-    constructor(settings?: any);
-
-    public getSentiment(text: string): any;
-  }
-
-  export {
-    LangRu,
-    StemmerRu,
-    StopwordsRu,
-    TokenizerRu,
-    NormalizerRu,
-    SentimentRu,
-  }
+  constructor(container?: any);
 }
+
+class TokenizerRu extends Tokenizer {
+}
+
+class StemmerRu extends Stemmer {
+}
+
+class StopwordsRu extends Stopwords {
+}
+
+class NormalizerRu extends Normalizer {
+}
+
+class SentimentRu {
+  constructor(settings?: any);
+
+  public getSentiment(text: string): any;
+}
+
+export {
+  LangRu,
+  StemmerRu,
+  StopwordsRu,
+  TokenizerRu,
+  NormalizerRu,
+  SentimentRu,
+}
+

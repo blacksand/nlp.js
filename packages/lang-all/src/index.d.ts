@@ -87,27 +87,27 @@ export {
   LangZh, NormalizerZh, SentimentZh, StemmerZh, StopwordsZh, TokenizerZh,
 }
 
-export declare const langDict: { [key: string]: string }
+export const langDict: { [key: string]: string }
 
-export declare function getNormalizer(inputLanguage?: string): any;
+export function getNormalizer(inputLanguage?: string): any;
 
-export declare function getTokenizer(inputLanguage?: string): any;
+export function getTokenizer(inputLanguage?: string): any;
 
-export declare function getStemmer(inputLanguage?: string): any;
+export function getStemmer(inputLanguage?: string): any;
 
-export declare function getStopwords(inputLanguage?: string): any;
+export function getStopwords(inputLanguage?: string): any;
 
-export declare function getSentiment(inputLanguage?: string): any;
+export function getSentiment(inputLanguage?: string): any;
 
-export declare function normalize(text: string, locale?: string): string;
+export function normalize(text: string, locale?: string): string;
 
-export declare function tokenize(text: string, locale?: string, shouldNormalize?: boolean): string[];
+export function tokenize(text: string, locale?: string, shouldNormalize?: boolean): string[];
 
-export declare function stem(text: string | string[], locale?: string): string[];
+export function stem(text: string | string[], locale?: string): string[];
 
-export declare function removeStopwords(tokens: string[], locale?: string): string[];
+export function removeStopwords(tokens: string[], locale?: string): string[];
 
-export declare function dict(sentences: string[], locale?: string, useStemmer?: boolean): {
+export function dict(sentences: string[], locale?: string, useStemmer?: boolean): {
   locale: string;
   useStemmer: boolean;
   freqs: { [key: string]: number };
@@ -116,7 +116,7 @@ export declare function dict(sentences: string[], locale?: string, useStemmer?: 
   length: number;
 };
 
-export declare function bow(sentence: string, voc: {
+export function bow(sentence: string, voc: {
   locale: string;
   useStemmer: boolean;
   freqs: { [key: string]: number };

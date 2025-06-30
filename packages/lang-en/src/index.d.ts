@@ -1,16 +1,21 @@
 import { Container } from '@nlpjs/core'
 import { NormalizerEn, StemmerEn, StopwordsEn, TokenizerEn } from '@nlpjs/lang-en-min'
 
-export class LangEn {
+class LangEn {
   register(container: Container): void;
 }
 
-export class SentimentEn {
+class SentimentEn {
   senticon: { [key: string]: number }
   negations: string[]
   stemmed: boolean
 }
 
 export {
-  TokenizerEn, StemmerEn, StopwordsEn, NormalizerEn,
+  LangEn,
+  NormalizerEn,
+  SentimentEn,
+  StemmerEn,
+  StopwordsEn,
+  TokenizerEn,
 }

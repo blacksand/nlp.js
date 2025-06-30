@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-ro' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangRo {
-    constructor(container?: any);
+class LangRo {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerRo extends Tokenizer {
-  }
+class TokenizerRo extends Tokenizer {
+}
 
-  class StemmerRo extends Stemmer {
-  }
+class StemmerRo extends Stemmer {
+}
 
-  class StopwordsRo extends Stopwords {
-  }
+class StopwordsRo extends Stopwords {
+}
 
-  class NormalizerRo extends Normalizer {
-  }
+class NormalizerRo extends Normalizer {
+}
 
-  class SentimentRo {
-    constructor(settings?: any);
+class SentimentRo {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangRo,
-    StemmerRo,
-    StopwordsRo,
-    TokenizerRo,
-    NormalizerRo,
-    SentimentRo,
-  }
+export {
+  LangRo,
+  StemmerRo,
+  StopwordsRo,
+  TokenizerRo,
+  NormalizerRo,
+  SentimentRo,
 }

@@ -45,6 +45,48 @@ importers:
         specifier: ^7.0.0
         version: 7.1.1
 
+  examples/16-fb-connector:
+    dependencies:
+      '@nlpjs/basic':
+        specifier: workspace:*
+        version: link:../../packages/basic
+      '@nlpjs/bot':
+        specifier: workspace:*
+        version: link:../../packages/bot
+      '@nlpjs/express-api-server':
+        specifier: workspace:*
+        version: link:../../packages/express-api-server
+      '@nlpjs/fb-connector':
+        specifier: workspace:*
+        version: link:../../packages/fb-connector
+      dotenv:
+        specifier: ^10.0.0
+        version: 10.0.0
+      express:
+        specifier: ^4.17.2
+        version: 4.21.2
+
+  examples/17-ner-nlg:
+    dependencies:
+      '@nlpjs/basic':
+        specifier: workspace:*
+        version: link:../../packages/basic
+
+  examples/18-ner-builtin-ms:
+    dependencies:
+      '@nlpjs/builtin-microsoft':
+        specifier: workspace:*
+        version: link:../../packages/builtin-microsoft
+      '@nlpjs/ner':
+        specifier: workspace:*
+        version: link:../../packages/ner
+
+  examples/19-ner-trim-entities:
+    dependencies:
+      '@nlpjs/ner':
+        specifier: '*'
+        version: 4.27.0
+
   packages/api-auth-jwt:
     dependencies:
       '@nlpjs/core':
@@ -824,6 +866,9 @@ importers:
       '@nlpjs/builtin-microsoft':
         specifier: workspace:*
         version: link:../builtin-microsoft
+      '@nlpjs/core':
+        specifier: workspace:*
+        version: link:../core
       '@nlpjs/core-loader':
         specifier: workspace:*
         version: link:../core-loader
@@ -839,6 +884,9 @@ importers:
       '@nlpjs/language':
         specifier: workspace:*
         version: link:../language
+      '@nlpjs/ner':
+        specifier: workspace:*
+        version: link:../ner
       '@nlpjs/neural':
         specifier: workspace:*
         version: link:../neural
@@ -1419,6 +1467,18 @@ packages:
 
   '@napi-rs/wasm-runtime@0.2.4':
     resolution: {integrity: sha512-9zESzOO5aDByvhIAsOy9TbpZ0Ur2AJbUI7UT73kcUTS2mxAMHOBaa1st/jAymNoCtvrit99kkzT1FZuXVcgfIQ==}
+
+  '@nlpjs/core@4.26.1':
+    resolution: {integrity: sha512-M/PeFddsi3y7Z1piFJxsLGm5/xdMhcrpOsml7s6CTEgYo8iduaT30HDd61tZxDyvvJseU6uFqlXSn7XKkAcC1g==}
+
+  '@nlpjs/language-min@4.25.0':
+    resolution: {integrity: sha512-g8jtbDbqtRm+dlD/1Vnb4VWfKbKteApEGVTqIMxYkk6N/HMhvLZ5J2svrxzrB98a/HZ0fb//YBfFgymnz9Oukg==}
+
+  '@nlpjs/ner@4.27.0':
+    resolution: {integrity: sha512-ptwkxriJdmgHSH9TfP10JQ1jviaSl2SupSFGUvTuWkuJhobQd3hbnlSq40V6XYvJNmqh9M9zEab/AKeghxYOTA==}
+
+  '@nlpjs/similarity@4.26.1':
+    resolution: {integrity: sha512-QutSBFGo/huNuz60PgqCjub0oBd9S8MLrjme33U5GzxuSvToQzXtn9/ynIia8qDm009D09VXV+LPeNE4h7yuSg==}
 
   '@noble/hashes@1.8.0':
     resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
@@ -2816,6 +2876,10 @@ packages:
   dotenv-expand@11.0.7:
     resolution: {integrity: sha512-zIHwmZPRshsCdpMDyVsqGmgyP0yT8GAgXUnkdAoJisxvf33k7yO6OuoKmcTGuXPWSsm8Oh88nZicRLA9Y0rUeA==}
     engines: {node: '>=12'}
+
+  dotenv@10.0.0:
+    resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
+    engines: {node: '>=10'}
 
   dotenv@16.4.7:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
@@ -6784,6 +6848,18 @@ snapshots:
       '@emnapi/runtime': 1.4.3
       '@tybys/wasm-util': 0.9.0
 
+  '@nlpjs/core@4.26.1': {}
+
+  '@nlpjs/language-min@4.25.0': {}
+
+  '@nlpjs/ner@4.27.0':
+    dependencies:
+      '@nlpjs/core': 4.26.1
+      '@nlpjs/language-min': 4.25.0
+      '@nlpjs/similarity': 4.26.1
+
+  '@nlpjs/similarity@4.26.1': {}
+
   '@noble/hashes@1.8.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
@@ -8485,6 +8561,8 @@ snapshots:
   dotenv-expand@11.0.7:
     dependencies:
       dotenv: 16.4.7
+
+  dotenv@10.0.0: {}
 
   dotenv@16.4.7: {}
 

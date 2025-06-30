@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-fa' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangFa {
-    constructor(container?: any);
+class LangFa {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerFa extends Tokenizer {
-  }
+class TokenizerFa extends Tokenizer {
+}
 
-  class StemmerFa extends Stemmer {
-  }
+class StemmerFa extends Stemmer {
+}
 
-  class StopwordsFa extends Stopwords {
-  }
+class StopwordsFa extends Stopwords {
+}
 
-  class NormalizerFa extends Normalizer {
-  }
+class NormalizerFa extends Normalizer {
+}
 
-  class SentimentFa {
-    constructor(settings?: any);
+class SentimentFa {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangFa,
-    StemmerFa,
-    StopwordsFa,
-    TokenizerFa,
-    NormalizerFa,
-    SentimentFa,
-  }
+export {
+  LangFa,
+  StemmerFa,
+  StopwordsFa,
+  TokenizerFa,
+  NormalizerFa,
+  SentimentFa,
 }

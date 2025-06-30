@@ -1,32 +1,32 @@
-declare module '@nlpjs/evaluator' {
-  class Evaluator {
-    constructor(settings?: any);
+import type { Context } from '@nlpjs/core'
 
-    evaluate(src: string, context: any): any;
+class Evaluator {
+  constructor(settings?: any);
 
-    addSource(name: string, src: string): void;
+  evaluate(src: string, context: Context): any;
 
-    compile(src: string, context: any): any;
-  }
+  addSource(name: string, src: string): void;
 
-  function compile(src: string, context: any): any;
+  compile(src: string, context: any): any;
+}
 
-  class Template {
-    constructor(settings?: any);
+function compile(src: string, context: any): any;
 
-    compile(src: string, context: any): any;
-  }
+class Template {
+  constructor(settings?: any);
 
-  class JavascriptCompiler {
-    constructor(settings?: any);
+  compile(src: string, context: any): any;
+}
 
-    compile(src: string, context: any): any;
-  }
+class JavascriptCompiler {
+  constructor(settings?: any);
 
-  export {
-    Evaluator,
-    compile,
-    Template,
-    JavascriptCompiler,
-  }
+  compile(src: string, context: any): any;
+}
+
+export {
+  Evaluator,
+  compile,
+  Template,
+  JavascriptCompiler,
 }

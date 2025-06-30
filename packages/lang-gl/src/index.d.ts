@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-gl' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangGl {
-    constructor(container?: any);
+class LangGl {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerGl extends Tokenizer {
-  }
+class TokenizerGl extends Tokenizer {
+}
 
-  class StemmerGl extends Stemmer {
-  }
+class StemmerGl extends Stemmer {
+}
 
-  class StopwordsGl extends Stopwords {
-  }
+class StopwordsGl extends Stopwords {
+}
 
-  class NormalizerGl extends Normalizer {
-  }
+class NormalizerGl extends Normalizer {
+}
 
-  class SentimentGl {
-    constructor(settings?: any);
+class SentimentGl {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangGl,
-    StemmerGl,
-    StopwordsGl,
-    TokenizerGl,
-    NormalizerGl,
-    SentimentGl,
-  }
+export {
+  LangGl,
+  StemmerGl,
+  StopwordsGl,
+  TokenizerGl,
+  NormalizerGl,
+  SentimentGl,
 }

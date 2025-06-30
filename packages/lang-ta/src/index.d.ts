@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-ta' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangTa {
-    constructor(container?: any);
+class LangTa {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerTa extends Tokenizer {
-  }
+class TokenizerTa extends Tokenizer {
+}
 
-  class StemmerTa extends Stemmer {
-  }
+class StemmerTa extends Stemmer {
+}
 
-  class StopwordsTa extends Stopwords {
-  }
+class StopwordsTa extends Stopwords {
+}
 
-  class NormalizerTa extends Normalizer {
-  }
+class NormalizerTa extends Normalizer {
+}
 
-  class SentimentTa {
-    constructor(settings?: any);
+class SentimentTa {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangTa,
-    StemmerTa,
-    StopwordsTa,
-    TokenizerTa,
-    NormalizerTa,
-    SentimentTa,
-  }
+export {
+  LangTa,
+  StemmerTa,
+  StopwordsTa,
+  TokenizerTa,
+  NormalizerTa,
+  SentimentTa,
 }

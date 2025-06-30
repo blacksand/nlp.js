@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-ko' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangKo {
-    constructor(container?: any);
+class LangKo {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerKo extends Tokenizer {
-  }
+class TokenizerKo extends Tokenizer {
+}
 
-  class StemmerKo extends Stemmer {
-  }
+class StemmerKo extends Stemmer {
+}
 
-  class StopwordsKo extends Stopwords {
-  }
+class StopwordsKo extends Stopwords {
+}
 
-  class NormalizerKo extends Normalizer {
-  }
+class NormalizerKo extends Normalizer {
+}
 
-  class SentimentKo {
-    constructor(settings?: any);
+class SentimentKo {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangKo,
-    StemmerKo,
-    StopwordsKo,
-    TokenizerKo,
-    NormalizerKo,
-    SentimentKo,
-  }
+export {
+  LangKo,
+  StemmerKo,
+  StopwordsKo,
+  TokenizerKo,
+  NormalizerKo,
+  SentimentKo,
 }

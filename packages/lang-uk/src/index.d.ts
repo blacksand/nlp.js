@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-uk' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangUk {
-    constructor(container?: any);
+class LangUk {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerUk extends Tokenizer {
-  }
+class TokenizerUk extends Tokenizer {
+}
 
-  class StemmerUk extends Stemmer {
-  }
+class StemmerUk extends Stemmer {
+}
 
-  class StopwordsUk extends Stopwords {
-  }
+class StopwordsUk extends Stopwords {
+}
 
-  class NormalizerUk extends Normalizer {
-  }
+class NormalizerUk extends Normalizer {
+}
 
-  class SentimentUk {
-    constructor(settings?: any);
+class SentimentUk {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangUk,
-    StemmerUk,
-    StopwordsUk,
-    TokenizerUk,
-    NormalizerUk,
-    SentimentUk,
-  }
+export {
+  LangUk,
+  StemmerUk,
+  StopwordsUk,
+  TokenizerUk,
+  NormalizerUk,
+  SentimentUk,
 }

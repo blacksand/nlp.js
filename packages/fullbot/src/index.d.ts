@@ -1,14 +1,12 @@
-declare module '@nlpjs/fullbot' {
-  import { Bot } from '@nlpjs/bot'
-  import { Container } from '@nlpjs/core'
+import { Bot } from '@nlpjs/bot'
+import { Container } from '@nlpjs/core'
 
-  class FullBot extends Bot {
-    constructor(settings?: any, container?: Container);
+class FullBot extends Bot {
+  constructor(settings?: any, container?: Container);
 
-    public start(): Promise<void>;
-  }
+  public start(): Promise<void>;
+}
 
-  export {
-    FullBot,
-  }
+export {
+  FullBot,
 }

@@ -1,3 +1,1 @@
-declare module '@nlpjs/emoji' {
-  export function removeEmojis(text: string): string;
-}
+export function removeEmojis(text: string): string;

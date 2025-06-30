@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-th' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangTh {
-    constructor(container?: any);
+class LangTh {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerTh extends Tokenizer {
-  }
+class TokenizerTh extends Tokenizer {
+}
 
-  class StemmerTh extends Stemmer {
-  }
+class StemmerTh extends Stemmer {
+}
 
-  class StopwordsTh extends Stopwords {
-  }
+class StopwordsTh extends Stopwords {
+}
 
-  class NormalizerTh extends Normalizer {
-  }
+class NormalizerTh extends Normalizer {
+}
 
-  class SentimentTh {
-    constructor(settings?: any);
+class SentimentTh {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangTh,
-    StemmerTh,
-    StopwordsTh,
-    TokenizerTh,
-    NormalizerTh,
-    SentimentTh,
-  }
+export {
+  LangTh,
+  StemmerTh,
+  StopwordsTh,
+  TokenizerTh,
+  NormalizerTh,
+  SentimentTh,
 }

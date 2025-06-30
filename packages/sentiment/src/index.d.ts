@@ -1,24 +1,50 @@
-import { Clonable, Container } from '@nlpjs/core'
+
+import { Clonable, Container } from '@nlpjs/core';
+
+export interface SentimentAnalyzerSettings {
+  tag?: string;
+  container?: Container;
+}
+
+export interface SentimentResult {
+  score: number;
+  numWords: number;
+  numHits: number;
+  average: number;
+  type: string;
+  locale: string;
+  vote?: 'positive' | 'negative' | 'neutral';
+}
+
+export interface SentimentInput {
+  text?: string;
+  utterance?: string;
+  locale: string;
+  settings?: SentimentAnalyzerSettings;
+  tokens?: string[];
+  sentiment?: SentimentResult;
+  sentimentDictionary?: {
+    type: string;
+    dictionary: { [key: string]: number };
+    negations: string[];
+    stemmed: boolean;
+  };
+}
 
 export class SentimentAnalyzer extends Clonable {
   constructor(settings?: Partial<SentimentAnalyzerSettings>, container?: Container);
 
   registerDefault(): void;
 
-  prepare(locale: string, text: string, settings?: any, stemmed?: boolean): string[] | Promise<string[]>;
+  prepare(locale: string, text: string, settings?: SentimentAnalyzerSettings, stemmed?: boolean): string[] | Promise<string[]>;
 
-  getDictionary(srcInput: any): Promise<any>;
+  getDictionary(srcInput: SentimentInput): Promise<SentimentInput>;
 
-  getTokens(srcInput: any): Promise<any>;
+  getTokens(srcInput: SentimentInput): Promise<SentimentInput>;
 
-  calculate(srcInput: any): any;
+  calculate(srcInput: SentimentInput): SentimentInput;
 
-  defaultPipelineProcess(input: any): Promise<any>;
+  defaultPipelineProcess(input: SentimentInput): Promise<SentimentInput>;
 
-  process(srcInput: any, settings?: any): Promise<any>;
-}
-
-export interface SentimentAnalyzerSettings {
-  tag?: string;
-  container?: Container;
+  process(srcInput: SentimentInput, settings?: SentimentAnalyzerSettings): Promise<SentimentInput>;
 }

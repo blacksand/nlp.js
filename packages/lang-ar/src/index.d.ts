@@ -1,36 +1,34 @@
-declare module '@nlpjs/lang-ar' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
-  class LangAr {
-    constructor(container?: any);
+declare class LangAr {
+  public name: string
 
-    public name: string
-  }
+  constructor(container?: any);
+}
 
-  class TokenizerAr extends Tokenizer {
-  }
+declare class TokenizerAr extends Tokenizer {
+}
 
-  class StemmerAr extends Stemmer {
-  }
+declare class StemmerAr extends Stemmer {
+}
 
-  class StopwordsAr extends Stopwords {
-  }
+declare class StopwordsAr extends Stopwords {
+}
 
-  class NormalizerAr extends Normalizer {
-  }
+declare class NormalizerAr extends Normalizer {
+}
 
-  class SentimentAr {
-    constructor(settings?: any);
+declare class SentimentAr {
+  constructor(settings?: any);
 
-    public getSentiment(text: string): any;
-  }
+  public getSentiment(text: string): any;
+}
 
-  export {
-    LangAr,
-    StemmerAr,
-    StopwordsAr,
-    TokenizerAr,
-    NormalizerAr,
-    SentimentAr,
-  }
+export {
+  LangAr,
+  StemmerAr,
+  StopwordsAr,
+  TokenizerAr,
+  NormalizerAr,
+  SentimentAr,
 }

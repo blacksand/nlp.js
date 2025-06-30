@@ -1,19 +1,33 @@
-export declare function leven(left: string, right: string): number;
-
-export declare function similarity(str1: string, str2: string, normalize?: boolean): number;
-
 import { Container } from '@nlpjs/core'
 
+export function leven(left: string, right: string): number;
+
+export function similarity(
+  str1: string,
+  str2: string,
+  normalize?: boolean,
+): number;
+
+interface TermFreq {
+  [key: string]: number;
+}
+
+interface Dict {
+  [key: string]: boolean;
+}
+
 export class CosineSimilarity {
+  public container?: Container
+
   constructor(container?: Container);
 
   getTokens(text: string | string[], locale?: string): string[];
 
-  termFreqMap(str: string, locale?: string): { [key: string]: number };
+  termFreqMap(str: string, locale?: string): TermFreq;
 
-  addKeysToDict(map: { [key: string]: any }, dict: { [key: string]: any }): void;
+  addKeysToDict(map: TermFreq, dict: Dict): void;
 
-  termFreqMapToVector(map: { [key: string]: any }, dict: { [key: string]: any }): number[];
+  termFreqMapToVector(map: TermFreq, dict: Dict): number[];
 
   vecDotProduct(vecA: number[], vecB: number[]): number;
 
@@ -21,22 +35,42 @@ export class CosineSimilarity {
 
   cosineSimilarity(vecA: number[], vecB: number[]): number;
 
-  getTermFreqVectors(strA: string, strB: string, locale?: string): [number[], number[]];
+  getTermFreqVectors(
+    strA: string,
+    strB: string,
+    locale?: string,
+  ): [number[], number[]];
 
   similarity(strA: string, strB: string, locale?: string): number;
 }
 
+interface Features {
+  [key: string]: number;
+}
+
+interface FeaturesByLength {
+  [key: string]: string[];
+}
+
 export class SpellCheck {
+  public settings: SpellCheckSettings
+  public minLength: number
+  public features: Features
+  public featuresByLength: FeaturesByLength
+  public featuresList: string[]
+
   constructor(settings?: SpellCheckSettings);
 
-  setFeatures(features: { [key: string]: any }): void;
+  setFeatures(features: Features): void;
 
   checkToken(token: string, distance: number): string;
 
-  check(tokens: string[] | { [key: string]: any }, distance?: number): string[] | { [key: string]: any };
+  check(tokens: string[] | Features, distance?: number): string[] | Features;
 }
 
-export interface SpellCheckSettings {
+interface SpellCheckSettings {
   minLength?: number;
-  features?: { [key: string]: any };
+  features?: Features;
 }
+
+export type { TermFreq, Dict, Features, FeaturesByLength, SpellCheckSettings }

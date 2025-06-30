@@ -1,5 +1,4 @@
-declare module '@nlpjs/lang-nl' {
-  import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
+import { Normalizer, Stemmer, Stopwords, Tokenizer } from '@nlpjs/core'
 
   class LangNl {
     constructor(container?: any);
@@ -33,4 +32,4 @@ declare module '@nlpjs/lang-nl' {
     NormalizerNl,
     SentimentNl,
   }
-}
+

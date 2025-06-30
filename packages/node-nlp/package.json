@@ -45,6 +45,7 @@
   "dependencies": {
     "@nlpjs/builtin-duckling": "workspace:*",
     "@nlpjs/builtin-microsoft": "workspace:*",
+    "@nlpjs/core": "workspace:*",
     "@nlpjs/core-loader": "workspace:*",
     "@nlpjs/emoji": "workspace:*",
     "@nlpjs/evaluator": "workspace:*",
@@ -52,6 +53,7 @@
     "@nlpjs/language": "workspace:*",
     "@nlpjs/neural": "workspace:*",
     "@nlpjs/qna-importer": "workspace:*",
+    "@nlpjs/ner": "workspace:*",
     "@nlpjs/nlg": "workspace:*",
     "@nlpjs/nlp": "workspace:*",
     "@nlpjs/nlu": "workspace:*",

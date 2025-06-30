@@ -1,15 +1,19 @@
-declare module '@nlpjs/mongodb-adapter' {
-  class MongodbAdapter {
-    constructor(settings?: any);
+import { Clonable, Container } from '@nlpjs/core';
 
-    public connect(): Promise<void>;
+export class MongodbAdapter extends Clonable {
+  constructor(settings?: any, container?: Container);
 
-    public disconnect(): Promise<void>;
+  public connect(): Promise<void>;
 
-    public getCollection(name: string): any;
-  }
+  public disconnect(): Promise<void>;
 
-  export {
-    MongodbAdapter,
-  }
+  public getCollection(name: string): any;
+
+  public save(collection: string, data: any): Promise<any>;
+
+  public findById(collection: string, id: string): Promise<any>;
+
+  public find(collection: string, query?: any, limit?: number, offset?: number): Promise<any[]>;
+
+  public remove(collection: string, condition: any): Promise<void>;
 }

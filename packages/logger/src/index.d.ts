@@ -1,4 +1,4 @@
-declare class Logger {
+export class Logger {
   debug(...args: any[]): void;
 
   info(...args: any[]): void;
@@ -14,6 +14,4 @@ declare class Logger {
   fatal(...args: any[]): void;
 }
 
-declare const logger: Logger
-
-export { type Logger, logger }
+export const logger: Logger

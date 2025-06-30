@@ -1,13 +1,7 @@
-declare module '@nlpjs/qna-importer' {
-  import { Clonable, Container } from '@nlpjs/core'
+import { Clonable, Container } from '@nlpjs/core'
 
-  class QnaImporter extends Clonable {
-    constructor(settings?: any, container?: Container);
+export class QnaImporter extends Clonable {
+  constructor(settings?: any, container?: Container);
 
-    public import(fileName: string): Promise<any>;
-  }
-
-  export {
-    QnaImporter,
-  }
+  public import(fileName: string): Promise<any>;
 }

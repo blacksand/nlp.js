@@ -1,41 +1,112 @@
-declare module '@nlpjs/open-question' {
-  import { Clonable, Container } from '@nlpjs/core'
+import { Worker } from 'worker_threads'
 
-  class ModelDownloader extends Clonable {
-    constructor(settings?: any, container?: Container);
+export interface BertTokenizerSettings {
+  filesDir?: string;
+  lowercase?: boolean;
+  vocabFile?: string;
+  vocabContent?: string;
+  clsToken?: string;
+  maskToken?: string;
+  padToken?: string;
+  sepToken?: string;
+  unkToken?: string;
+}
 
-    public download(): Promise<void>;
-  }
+export class BertTokenizer {
+  constructor(settings: BertTokenizerSettings);
 
-  class Model extends Clonable {
-    constructor(settings?: any, container?: Container);
+  static getLowerCase(name: string): boolean | undefined;
 
-    public load(): Promise<void>;
+  getQuestionLength(encoding: any): number;
 
-    public process(input: any): Promise<any>;
-  }
+  getContextStartIndex(encoding: any): number;
 
-  class Runtime extends Clonable {
-    constructor(settings?: any, container?: Container);
+  getContextEndIndex(encoding: any): number;
 
-    public start(): Promise<void>;
+  encode(sequence: string, pair: string): any; // Return type can be refined
+  encodeSliced(sequence: string, pair: string): any; // Return type can be refined
+  setPadding(length: number): void;
 
-    public stop(): Promise<void>;
+  setTruncation(length: number, stride: number): void;
+}
 
-    public process(input: any): Promise<any>;
-  }
+export interface ModelDownloaderSettings {
+  baseUrl?: string;
+  dir?: string;
+  proxy?: string;
+}
 
-  class QAClient extends Clonable {
-    constructor(settings?: any, container?: Container);
+export class ModelDownloader {
+  constructor(settings?: ModelDownloaderSettings);
 
-    public process(input: any): Promise<any>;
-  }
+  download(name: string): Promise<string>;
+}
 
-  export {
-    BertTokenizer,
-    ModelDownloader,
-    Model,
-    Runtime,
-    QAClient,
-  }
+export interface ModelSettings {
+  name: string;
+  dir?: string;
+  proxy?: string;
+}
+
+export class Model {
+  constructor(name: string, dir?: string, proxy?: string);
+
+  start(): Promise<void>;
+
+  runInference(encodings: any[]): Promise<[number[], number[]]>;
+
+  stop(): void;
+}
+
+export interface QAClientSettings {
+  modelName?: string;
+  modelDir?: string;
+  proxy?: string;
+  tokenizer?: BertTokenizer;
+  cased?: boolean;
+}
+
+export interface AnswerResult {
+  text: string;
+  score: number;
+}
+
+export class QAClient {
+  constructor(settings?: QAClientSettings);
+
+  start(srcSettings?: QAClientSettings): Promise<void>;
+
+  getFeatures(question: string, context: string, stride?: number): any[]; // Return type can be refined
+  predict(question: string, context: string, maxAnswerLength?: number): Promise<AnswerResult | undefined>;
+
+  stop(): void;
+}
+
+export interface RuntimeSettings {
+  inputs: string[];
+  path: string;
+}
+
+export class Runtime {
+  constructor(settings: RuntimeSettings);
+
+  runInference(ids: number[][], attentionMask: number[][], tokenTypeIds: number[][]): Promise<[number[], number[]]>;
+
+  start(): Promise<void>;
+
+  stop(): void;
+}
+
+export class RuntimeWorker extends Worker {
+  constructor();
+
+  loadModel(params: any): Promise<void>; // Params can be refined
+  close(): void;
+
+  queueInference(
+    modelPath: string,
+    ids: number[][],
+    attentionMask: number[][],
+    tokenTypeIds: number[][],
+  ): Promise<[number[], number[]]>;
 }

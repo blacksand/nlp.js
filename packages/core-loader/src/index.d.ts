@@ -1,29 +1,6 @@
-/*
- * Copyright (c) AXA Group Operations Spain S.A.
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
 import { Clonable, Container } from '@nlpjs/core'
 
-export interface ContainerConfiguration {
+interface ContainerConfiguration {
   pathConfiguration?: string;
   pathPipeline?: string;
   pathPlugins?: string;
@@ -39,14 +16,14 @@ export interface ContainerConfiguration {
   pipelines?: string;
 }
 
-export class Dock extends Clonable {
+class Dock extends Clonable {
   containers: Record<string, Container>
 
   constructor();
 
   getContainer(name?: string): Container;
 
-  get(name: string): any;
+  get<T = any>(name: string): T;
 
   createContainer(
     name: string | ContainerConfiguration,
@@ -65,14 +42,14 @@ export class Dock extends Clonable {
 }
 
 // Exported variables and functions
-export const dock: Dock
+const dock: Dock
 
-export function dockStart(
+function dockStart(
   settings?: ContainerConfiguration | string,
   mustLoadEnv?: boolean,
 ): Promise<Dock>;
 
-export function containerBootstrap(
+function containerBootstrap(
   inputSettings?: ContainerConfiguration | string,
   srcMustLoadEnv?: boolean,
   container?: Container,
@@ -82,23 +59,23 @@ export function containerBootstrap(
 ): Container;
 
 // Helper functions
-export function hasUnicode(str: string): boolean;
+function hasUnicode(str: string): boolean;
 
-export function unicodeToArray(str: string): string[];
+function unicodeToArray(str: string): string[];
 
-export function asciiToArray(str: string): string[];
+function asciiToArray(str: string): string[];
 
-export function stringToArray(str: string): string[];
+function stringToArray(str: string): string[];
 
-export function compareWildcars(text: string, pattern: string): boolean;
+function compareWildcars(text: string, pattern: string): boolean;
 
-export function getAbsolutePath(relative: string): string;
+function getAbsolutePath(relative: string): string;
 
-export function listFiles(folderPath: string, recursive?: boolean): string[];
+function listFiles(folderPath: string, recursive?: boolean): string[];
 
-export function listFilesAbsolute(folderPath: string, recursive?: boolean): string[];
+function listFilesAbsolute(folderPath: string, recursive?: boolean): string[];
 
-export function loadEnv(fileName?: string): void;
+function loadEnv(fileName?: string): void;
 
 // Re-exports from @nlpjs/core
 export {
@@ -107,16 +84,30 @@ export {
   BaseStemmer,
   Clonable,
   Container,
-  defaultContainer,
+  ContainerConfiguration,
+  Context,
+  Dock,
+  MemoryStorage,
   Normalizer,
   ObjToArr,
   Stemmer,
   Stopwords,
-  Tokenizer,
   Timer,
-  logger,
-  MemoryStorage,
-  uuid,
-  Context,
+  Tokenizer,
+  asciiToArray,
+  compareWildcars,
+  containerBootstrap,
+  defaultContainer,
+  dock,
+  dockStart,
+  getAbsolutePath,
+  hasUnicode,
+  listFiles,
+  listFilesAbsolute,
+  loadEnv,
   loadEnvFromJson,
+  logger,
+  stringToArray,
+  unicodeToArray,
+  uuid,
 } from '@nlpjs/core'

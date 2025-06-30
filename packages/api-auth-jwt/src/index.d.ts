@@ -1,19 +1,17 @@
-declare module '@nlpjs/api-auth-jwt' {
-  import { Container } from '@nlpjs/core'
+import { Container } from '@nlpjs/core'
 
-  class ApiAuthJwt {
-    constructor(settings?: any, container?: Container);
+class ApiAuthJwt {
+  constructor(settings?: any, container?: Container);
 
-    public start(): Promise<void>;
-  }
+  public start(): Promise<void>;
+}
 
-  function configurePassport(settings?: any): any;
+function configurePassport(settings?: any): any;
 
-  function ensureAuthenticated(): any;
+function ensureAuthenticated(): any;
 
-  export {
-    ApiAuthJwt,
-    configurePassport,
-    ensureAuthenticated,
-  }
+export {
+  ApiAuthJwt,
+  configurePassport,
+  ensureAuthenticated,
 }

@@ -1,8 +1,9 @@
-declare class Token {
-  constructor(value: string, type: number);
+export interface Token {
+  readonly value: string
+  readonly type: number
 }
 
-declare class Lexer {
+export class Lexer {
   static TokenType: {
     Identifier: number;
     Number: number;
@@ -67,4 +68,3 @@ declare class Lexer {
   getIndent(): number;
 }
 
-export { Lexer }

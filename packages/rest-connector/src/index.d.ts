@@ -1,14 +1,8 @@
-declare module '@nlpjs/rest-connector' {
-  import { Connector } from '@nlpjs/connector'
-  import { Container } from '@nlpjs/core'
+import { Connector } from '@nlpjs/connector'
+import { Container } from '@nlpjs/core'
 
-  class RestConnector extends Connector {
-    constructor(settings?: any, container?: Container);
+export class RestConnector extends Connector {
+  constructor(settings?: any, container?: Container);
 
-    public serve(port: number): Promise<void>;
-  }
-
-  export {
-    RestConnector,
-  }
+  public serve(port: number): Promise<void>;
 }

@@ -1,20 +1,18 @@
-declare module '@nlpjs/bert-tokenizer' {
-  import { Clonable, Container } from '@nlpjs/core'
+import { Clonable, Container } from '@nlpjs/core'
 
-  class BertWordPieceTokenizer extends Clonable {
-    constructor(settings?: any, container?: Container);
+class BertWordPieceTokenizer extends Clonable {
+  constructor(settings?: any, container?: Container);
 
-    public tokenize(text: string): string[];
-  }
+  public tokenize(text: string): string[];
+}
 
-  class MultiBertWordPieceTokenizer extends Clonable {
-    constructor(settings?: any, container?: Container);
+class MultiBertWordPieceTokenizer extends Clonable {
+  constructor(settings?: any, container?: Container);
 
-    public tokenize(text: string, locale: string): string[];
-  }
+  public tokenize(text: string, locale: string): string[];
+}
 
-  export {
-    BertWordPieceTokenizer,
-    MultiBertWordPieceTokenizer,
-  }
+export {
+  BertWordPieceTokenizer,
+  MultiBertWordPieceTokenizer,
 }
