@@ -26,6 +26,6 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "axios": "^0.28.1"
+    "axios": "^0.31.1"
   }
 }
